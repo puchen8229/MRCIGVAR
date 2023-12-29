@@ -34,3 +34,5 @@ Suggests:
     rmarkdown
 LazyData: true
 VignetteBuilder: knitr
+URL: https://github.com/puchen8229/MRCIGVAR
+BugReports: https://github.com/puchen8229/MRCIGVAR/issues
