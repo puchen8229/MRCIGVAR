@@ -33,3 +33,4 @@ Suggests:
     testthat,
     rmarkdown
 LazyData: true
+VignetteBuilder: knitr
