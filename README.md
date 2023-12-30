@@ -80,4 +80,4 @@ res_e$Summary
 ```
 
 For more detailed use of MRCIGVAR please read Introduction to
-MRCIGVAR.html in the vignettes directory, or click: https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/main/vignettes/Introduction-to-MRCIGVAR.html
+MRCIGVAR.html in the vignettes directory, or click: https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/main/vignettes/Introduction to MRCIGVAR.html
