@@ -25,3 +25,4 @@ An (mn, mn, p ) array of the GVAR(m,n,p) coefficients.
 \description{
 Transformation of country GVAR parameters to the Global VAR parameters
 }
+\keyword{internal}

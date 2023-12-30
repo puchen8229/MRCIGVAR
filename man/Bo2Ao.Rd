@@ -31,3 +31,4 @@ Parameter matrix of the foreign variables in the country equation of the GVAR mo
 \description{
 This function calculates Ao coefficients from Bo with common trends.
 }
+\keyword{internal}

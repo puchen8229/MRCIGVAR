@@ -53,3 +53,4 @@ Sum of squared residuals
 \description{
 Help function for nonlinear optimization in constrained estimation of CIVAR
 }
+\keyword{internal}

@@ -15,3 +15,4 @@ MRCIGVARDataR(res)
 \description{
 This function will generate data from a MRCIGVAR object. It will generate enough data for estimation purpose.
 }
+\keyword{internal}

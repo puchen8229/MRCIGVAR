@@ -19,3 +19,4 @@ a new index
 \description{
 Re-indexing the order of the endogenous and exogenous variables
 }
+\keyword{internal}

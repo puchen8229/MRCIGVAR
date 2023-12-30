@@ -16,8 +16,7 @@ MRGVAR_Select(res, I, L_V, TH_V)
 \item{TH_V}{: a vector containing possible threshold values.}
 }
 \value{
-\preformatted{a matrix with different lag specifications and the corresponding values of the model selection criteria.
-}
+a matrix with different lag specifications and the corresponding values of the model selection criteria.
 }
 \description{
 Calculation of information criteria for a MRGVAR model

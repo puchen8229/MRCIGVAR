@@ -28,27 +28,30 @@ This function estimates constrained VECM using the iteration procedure proposed 
 \section{Details}{
 
 This function runs a likelihood ratio test of linear restrictions on \eqn{\alpha} and \eqn{\beta} in a CIVAR model in the following form:
-\deqn{vec(\alpha') = G \psi,  vec(\beta) = H\phi + h}\preformatted{   example 1 (restrictions on alpha) test of exogeneity
-             vec(alpha) is 45 x 1  vector  ( n = 9 crk = 5, defined by the model )
-             G          is 45 x 40 matrix  ( the first variable is exogenous, i.e. the 5 adjustment coefficient of the first variable are zero )
-             psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by G)
-             vec(beta)  is 45 x 1 vector   ( N = 0 crk = 5 )
-             H          is 45 x 45 identity matrix
-             phi        45 x 1 vector (free varying parameters not appearing in the specification but implied by h =0
-             h          45 x 1 zero matrix implying ver(beta) = phi  >> no restrictions on beta.
-                        (H is identity and h is zero vector implies only restrictions on alpha)
+\deqn{vec(\alpha') = G \psi,  vec(\beta) = H\phi + h}
 
-   example 2 (restrictions on beta ) test of PPP
-             vec(alpha) is 40 x 1  vector  ( N = 8 crk = 5 ) conditional VECM  or VECMX model
-             G          is 40 x 40 identity matrix, implying there is no restriction on alpha
-             psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by the identity matrix G
-             vec(beta)  is 45 x 1 vector   ( N = 8 crk = 5, defined by the model )
-             H          is 45 x 2 matrix that picks out the elements under restrictions ( two columns out of the identity matrix ) a zero row in H and the corresponding h implies zero-restrictions on beta.
-                        ones in a row of H and zero in the corresponding h implies non-restricted beta.
-             phi        2  x 1  vector (free varying parameters not appearing in the specification but implied by h =0
-             h          45 x 1  non zero elements in this vector together with the zero elements in the corresponding row in H are the normalization conditions.
-                        (H is identity and h is zero vector implies only restrictions on alpha)
-}
+example 1 (restrictions on alpha) test of exogeneity: one weakly exogenous variable
+vec(alpha) is n\emph{crk x 1  vector
+G          is n}crk x (n-k)\emph{crk matrix  (k is the number of weakly exogenous)
+psi        (n-k)\emph{crk x 1 vector
+vec(beta)  is n}crk x 1 vector
+H          is n}crk x n\emph{crk identity matrix
+phi        n}crk x 1 vector
+h          n*crk x 1 zero matrix implying ver(beta) = phi.
+(H is identity and h is zero vector implies only restrictions on alpha)
+
+example 2 (restrictions on beta ) test of PPP
+vec(alpha) is n\emph{crk x 1 vector
+G          is n}crk x n\emph{crk identity matrix, implying no restriction on alpha
+psi        n}crk x 1 vector
+vec(beta)  n\emph{crk x 1 vector
+H          n}crk x 2 matrix that picks out the elements under restrictions
+two columns out of the identity matrix.
+ones in a row of H and zero in the corresponding h implies non-restricted beta.
+phi        2 x 1  vector
+h          n*crk x 1  non zero elements in this vector together with the zero elements in
+the corresponding row in H are the normalization conditions.
+(H is identity and h is zero vector implies only restrictions on alpha)
 }
 
 \examples{

@@ -17,3 +17,4 @@ T x n matrix of iid normal time series
 \description{
 This function will generate iid multivariate normal random time series.
 }
+\keyword{internal}

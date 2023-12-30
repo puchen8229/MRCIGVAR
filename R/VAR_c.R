@@ -15,7 +15,7 @@
 #' @param X     : a (T x k) matrix of exogenous variables.
 #' @param mu    : an n vector of the expected mean of the VAR(p) process
 #' @param Yo    : a p x n matrix of initial values of the VAR(p) process
-#' @return      An object of VAR(p) containing the generated data, the used parameters and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
+#' @return An object of VAR(p) containing the generated data, the used parameters and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
 #' @examples
 #' res_d = VARData(n=2,p=2,T=100,type="const")
 #' res_d = VARData(n=2,p=2,T=10,Co=c(1:2)*0,type="none")
@@ -365,6 +365,13 @@ VARest <- function (res)
 #' @param Xshks the number of exogenous variables
 #'
 #' @return an (n, n, nstep, 3) array containing the impulse response functions
+#' @examples
+#' res_d = VARData(n=2,p=2,T=100,type="const")
+#' res_e = VARest(res=res_d);
+#' IRF_CB = irf_VAR_CB(res=res_e,nstep=20, comb=NA, irf = "gen1", runs = 100, conf = c(0.05, 0.95))
+#' IRF_list <-IRF_graph(IRF_CB)
+#' res_e$Summary
+#'
 #' @export
 irf_VAR_CB <- function (res, nstep, comb, irf = c("gen", "chol", "chol1", "gen1", "comb1","irfX"), runs = 200, conf = c(0.05, 0.95),smat=NA,Xshks=NA)
 {

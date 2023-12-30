@@ -21,9 +21,8 @@
 #' @param Yo    : a (p, n, S) array of initial values of the process
 #' @param Do    : a (T, n, S) array of extra exogenous components (not used with value zero)
 #' @param d     : lag delays of the self-exiting switching variable.
-#'
 #'              (TH,Bo,Co,Sigmao,Uo,SV,type) if not provided, they will be generated randomly.
-#' @return      an MRVAR(n,p,S) object that is a list containing the generated data, the used parameters and the exogenous variables.
+#' @return an MRVAR(n,p,S) object that is a list containing the generated data, the used parameters and the exogenous variables.
 #'
 #' @examples
 #' p = matrix(c(3,3,0,0),2,2)
@@ -488,6 +487,8 @@ MRVARest <- function (res)
 #'
 #' @return An array of containing exogenous data
 #' @export
+#' @keywords internal
+#'
 JointX = function(X) {
 ### X: the T x Nx x S array collecting the exogenous variables in MRVAR with state dependent exog variables
 	S  = dim(X)[3]
@@ -537,6 +538,8 @@ JointX = function(X) {
 #' IRF_list <-IRF_graph(RF4)
 #'
 #' @export
+#' @keywords internal
+#'
 girf_MRVAR_RM <- function(RES,shock,R,nstep,Omega_hist=NA,resid_method) {
   ####  this function generate the impulse response function of MRVAR with migration
   ####
@@ -717,8 +720,10 @@ girf_MRVAR_RM_CB <- function (RES, shock, R, nstep, Omega_hist=NA, resid_method 
 #' @param G The matrix used in the permanent and transitory decomposition
 #' @param smat An explicit decomposition matrix that defines a structural shock.
 #'
-#' @return The transformation matrix for shock decomposition
+#' @return The transformation matrix for a shock decomposition
 #' @export
+#' @keywords internal
+#'
 U1=function(B,sigma,irf = c("gen", "chol", "chol1","gen1","genN1","comb", "comb1","smat","concerts1","concerts0","concertc"),comb,G=NA,smat=NA)
   {
     ##-----debug--------
@@ -791,6 +796,8 @@ U1=function(B,sigma,irf = c("gen", "chol", "chol1","gen1","genN1","comb", "comb1
 #' IRF_list2 <-IRF_graph(IRF_CB[,,,,2])
 #'
 #' @export
+#' @keywords internal
+#'
 irf_MRVAR_NM <-function (RESS, nstep, comb, irf = c("gen", "chol", "chol1", "gen1", "comb1"))
 {
   p = RESS$p
@@ -1004,7 +1011,7 @@ irf_MRVAR_CB <- function (res_e, nstep, comb, irf = c("gen", "chol", "chol1", "g
 #' @param  res  : an MRVAR object generated from MRVARData or estimated from MRVARest.
 #' @param  L_V  : a 2 components vector containing the maxima lags in the two regimes, respectively.
 #' @param  TH_V  : a vector containing the possible threshold values over which the model selection criteria values will be calculated.
-#' @return      a matrix with different lag specifications and threshold values as well as the corresponding information criterion values.
+#' @return a matrix with different lag specifications and threshold values as well as the corresponding information criterion values.
 #' @examples
 #'
 #' res_d = MRVARData(n=4,p=matrix(c(2,1,2,2,0,0,0,0),4,2),T=800,S=2,SESVI=1)

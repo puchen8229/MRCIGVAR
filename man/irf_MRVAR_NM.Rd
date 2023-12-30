@@ -40,3 +40,4 @@ IRF_list1 <-IRF_graph(IRF_CB[,,,,1])
 IRF_list2 <-IRF_graph(IRF_CB[,,,,2])
 
 }
+\keyword{internal}

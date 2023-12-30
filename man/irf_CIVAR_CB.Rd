@@ -39,8 +39,7 @@ irf_CIVAR_CB(
 \item{conf}{: a two component vector containing the tail probabilities of the bootstrap confidence interval.}
 }
 \value{
-\preformatted{  an array of dimension (n, n, nstep, 3).
-}
+an array of dimension (n, n, nstep, 3).
 }
 \description{
 This function generates the impulse response functions of an estimated CIVAR model

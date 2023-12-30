@@ -21,3 +21,4 @@ The parameter of the multi regime cointegrated VAR
 \description{
 Transformation of parameters of MRVECM to paramters of MRCIVAR
 }
+\keyword{internal}

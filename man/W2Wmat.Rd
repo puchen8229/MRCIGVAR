@@ -15,3 +15,4 @@ the corresponding weighting matrix
 \description{
 Transformation of a weighting vector to a weighting matrix
 }
+\keyword{internal}

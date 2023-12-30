@@ -17,7 +17,5 @@ A vector of AR coefficients
 \description{
 Given the roots of a characteristic polynom in lags, output the coefficients of the corresponding AR process.
 }
-\examples{
-
-Roots2coef(3,c(1.1,1.2,1.3))
-}
+\keyword{Roots2coef(3,c(1.1,1.2,1.3))}
+\keyword{internal}

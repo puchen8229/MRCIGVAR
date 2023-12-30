@@ -10,8 +10,9 @@ MRGVARDataR(res)
 \item{res}{: an output of MRGVARest}
 }
 \value{
-: an MRGVAR object.
+an MRGVAR object.
 }
 \description{
 This function will generate data from a MRGVAR object. It will generate enough data for estimation purpose.
 }
+\keyword{internal}

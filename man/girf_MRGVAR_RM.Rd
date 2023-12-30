@@ -53,3 +53,4 @@ GIRF_CB = girf_MRGVAR_RM_CB(res=res_e,shock=c(1,1,1,1),R=100,nstep=10,Omega_hist
 resid_method='parametric',conf=c(0.05,0.95),N=10)
 IRF_g   = IRF_graph(GIRF_CB,Names=c("P","Q","Pa","Qa"))    #IRF
 }
+\keyword{internal}

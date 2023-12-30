@@ -15,8 +15,7 @@
 #' @param Co    : an (m , k+1, n) array collecting the coefficients of the deterministic components of the n countries.
 #' @param Uo    : an (T x mn) matrix of the temporally independent innovation processes
 #' @param Sigmao : (mn x mn) matrix of the covariance matrix of the CIGVAR(m,n,p)
-#'
-#'    		      (W,r_npo,Ao,Bo,Uo,Sigmao) if not provided, they will be generated randomly. The default assumption is one unit root in one country. Hence m-1 cointegration relations in each country.
+#' (W,r_npo,Ao,Bo,Uo,Sigmao) if not provided, they will be generated randomly. The default assumption is one unit root in one country. Hence m-1 cointegration relations in each country.
 #'
 #' @param type	: deterministic component "const", "none", "exog0", and "exog1" are four options
 #' @param X	: a (T x k x n) array of exogenous stationary variables.
@@ -26,7 +25,7 @@
 #' @param Ncommfakt   : number of common exogenous stochastic factors
 #' @param A           : a transformation matrix that adds the common exogenous factors to the system.
 #' @param uz          : innovations of the exogenous common factors
-#' @return      a CIGVAR object containing the generated data, the parameters used and the exogenous variables.
+#' @return a CIGVAR object containing the generated data, the parameters used and the exogenous variables.
 #'
 #' @examples
 #' n = 5
@@ -486,6 +485,8 @@ CIGVARest <- function (res)  {
 #'
 #' @return A list containing the parameter matrix of the domestic variables, the cointegration vectors and the adjustment vectors
 #' @export
+#' @keywords internal
+#'
 VARB_commtrend <- function (m, p, T, r_npo, Ncommtrend, n)
 {
   alpha = list()
@@ -583,7 +584,7 @@ VARB_commtrend <- function (m, p, T, r_npo, Ncommtrend, n)
 #'
 #' @param  res  : an object generated from CIGVARest.
 #' @param  L_V  : a 2 components vector containing the maxima of the domestic lag and the foreign lag, respectively.
-#' @return      : a matrix with different lag specifications and the corresponding information criteria.
+#' @return a matrix with different lag specifications and the corresponding information criteria.
 #' @examples
 #'
 #'

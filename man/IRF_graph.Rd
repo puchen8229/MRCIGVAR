@@ -32,3 +32,4 @@ An ggplot object of impulse response functions
 \description{
 Plot impulse response functions
 }
+\keyword{internal}

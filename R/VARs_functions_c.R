@@ -25,7 +25,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' @keywords internal
 #' Roots2coef(3,c(1.1,1.2,1.3))
 Roots2coef = function(p,r_p) {
    if (missing(r_p)) r_p <- 0.5/(stats::runif(p)-0.5)  #random number outside unit circle
@@ -64,6 +64,7 @@ Roots2coef = function(p,r_p) {
 #' @param sigma An (n x n) covariance matrix of the normal series
 #' @return T x n matrix of iid normal time series
 #' @export
+#' @keywords internal
 rnormSIGMA = function(T,sigma) {
     # generate random numbers from iid multivariate normal distribution with covariance matrix Sigma
     n = dim(sigma)[1]
@@ -87,6 +88,7 @@ rnormSIGMA = function(T,sigma) {
 #'
 #' @return A (T x (n-1)) matrix of iid conditional normal time series or the conditional expected values
 #' @export
+#' @keywords internal
 rnormSIGMA_cond = function(T,sigma,I,v,switch) {
     # generate random numbers from iid multivariate conditional normal distribution with covariance matrix Sigma, given
     # i-th component has the value of v, this will be an (n-1) dimensional random number
@@ -102,6 +104,7 @@ rnormSIGMA_cond = function(T,sigma,I,v,switch) {
 #' @param N The number of elements to be selected
 #' @param T The total number of elements
 #' @export
+#' @keywords internal
 NoutofT = function(N,T) {
   unique(round(stats::runif(3*N)*(T-1)))[1:N]+1
 }
@@ -222,6 +225,7 @@ irf_B_sigma <- function (B, sigma, nstep, comb, irf = c("gen", "chol",
 #'
 #' @return An ggplot object of impulse response functions
 #' @export
+#' @keywords internal
 IRF_graph <- function(IRF_CB=IRF_CB,Names = NA,INames=NA,response=c(1:n),impulse=c(1:n),ncol=n) {
   ### This function create a list of ggplot objects for the impulse response functions
   IRF_list = list()
@@ -262,6 +266,7 @@ IRF_graph <- function(IRF_CB=IRF_CB,Names = NA,INames=NA,response=c(1:n),impulse
 #'
 #' @return A matrix containing the embedded time series y.
 #' @export
+#' @keywords internal
 Embed <- function(y=tseries::ts(c(1:20)),p=3,prefix="") {
   YY = stats::embed(y,p)
   if (!is.null(colnames(y))) {
@@ -291,6 +296,7 @@ Embed <- function(y=tseries::ts(c(1:20)),p=3,prefix="") {
 #'
 #' @return A response matrix
 #' @export
+#' @keywords internal
 INVI = function(sigma,c,i) {
   n = dim(sigma)[1]
   sigmaout = matrix(0,n,n)
@@ -319,6 +325,7 @@ INVI = function(sigma,c,i) {
 #' @param Z2 The lagged difference series
 #'
 #' @export
+#' @keywords internal
 f <- function(x,beta,Z1,St,NSt,Y0,Z2) {
   dim(x) = dim(beta)
   CI = Z1%*%x
@@ -349,6 +356,7 @@ f <- function(x,beta,Z1,St,NSt,Y0,Z2) {
 #'
 #' @return Sum of squared residuals
 #' @export
+#' @keywords internal
 f_constrained <- function(x, beta=beta,alpha=alpha,G=G,H=H,phi=phi,psi=psi,h=h, Z1, St, NSt, Y0, Z2) {
   ## this is a help function to incoporate restrictions on beta and regime specific alpha
   ## vec(alpha'_1) = G_1 psi_1,  vec(alpha'_2) = G_2 psi_2   , vec(beta) = H phi + h
@@ -392,6 +400,7 @@ f_constrained <- function(x, beta=beta,alpha=alpha,G=G,H=H,phi=phi,psi=psi,h=h, 
 #'
 #' @export
 #'
+#' @keywords internal
 ShiftZ2 <- function(Z2,kz,n1,p) {
   # kz : number of Commfakts
   # Z2 : Regressiors on the auxiliery regression
@@ -424,6 +433,7 @@ ShiftZ2 <- function(Z2,kz,n1,p) {
 #'
 #' @export
 #'
+#' @keywords internal
 ShiftZ2m <- function(Z2,kz,n1,p,p2) {
   if ((kz>0)&(p>0)) {
     cc = (1:(kz*p))*0

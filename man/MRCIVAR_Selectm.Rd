@@ -14,8 +14,7 @@ MRCIVAR_Selectm(res = res, L_V = L_V, TH_V = TH_V)
 \item{TH_V}{: a vector containing possible threshold values for the selection.}
 }
 \value{
-\preformatted{ : a matrix with different lag specifications, threshold values, and the corresponding model selection criteria.
-}
+A matrix with different lag specifications, threshold values, and the corresponding model selection criteria.
 }
 \description{
 Calculation of information criteria AIC and BIC for MRCIVAR models

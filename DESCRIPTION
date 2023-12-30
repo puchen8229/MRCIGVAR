@@ -4,15 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Pu", "Chen", , "chenpu08@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: This package contains functions for data generation with flexible model specifications, parameter estimation, model selection, impulse response functions, and parameter constraint tests for the following 8 classes of econometric models:
-    VAR: vector autorgressive models
-    CIVAR: cointegrated vector autoregressive models
-    GVAR: global vector autoregressive models
-    CIGVAR: cointegrated vector autoregressive models
-    MRVAR: multi regime vector autoregressive models
-    MRCIVAR: multi regime cointegrated vector autoregressive models
-    MRGVAR: multi regime global vector autoregressive models
-    MRCIGVAR: multi regime cointegrated global vector autoregressive models
+Description: This package contains functions for data generation with flexible model specifications, parameter estimation, model selection, impulse response functions, and parameter constraint tests for the following classes of econometric models including VAR, CIVAR, MRVAR, MRCIVAR, GVAR, CIGVAR, MRGVAR, and MRCIGVAR.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

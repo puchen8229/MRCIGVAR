@@ -422,6 +422,9 @@ MRCIGVARData <- function(m,n,p,T,S,W=NA,SESVI=NA,TH=NA,Go=NA,Ao=NA,Bo=NA,Sigmao=
 #'
 #' @return A list contain VAR parameters B, alpha, and beta
 #' @export
+#' @keywords internal
+#'
+#'
 VARBS_commtrend = function(m,p,T,r, Ncommtrend,n,S,r_npo) {
   alpha   = list()
   beta    = list()
@@ -510,6 +513,8 @@ VARBS_commtrend = function(m,p,T,r, Ncommtrend,n,S,r_npo) {
 #'
 #' @return Parameter matrix of the foreign variables in the country equation of the GVAR model
 #' @export
+#' @keywords internal
+#'
 Bo2Ao <- function(m,p,T,r, Ncommtrend,n,S,r_npo,DFYflag=NA) {
   if ( anyNA(DFYflag) ) DFYflag = 0
   Boab  = VARBS_commtrend(m,p,T,r,Ncommtrend,n,S,r_npo)
@@ -546,6 +551,8 @@ Bo2Ao <- function(m,p,T,r, Ncommtrend,n,S,r_npo,DFYflag=NA) {
 #'
 #' @return Transformed Bo and Ao matrices
 #' @export
+#' @keywords internal
+#'
 BoAo2TBoAo = function(Bo,Ao,W,S) {
   TBo = Bo*0
   TAo = Ao*0
@@ -878,7 +885,7 @@ MRCIGVARest <- function(res) {
 #' @param  res  : an MRCIGVAR object generated from MRCIGVARData or estimated from MRCIGVARest.
 #' @param  L_V  : a 2 components vector containing the maxima of the domestic lag length and the foreign lag length respectively.
 #' @param  TH_V  : a vector containing possible threshold values .
-#' @return      a matrix with different lag specifications,  threshold values and the corresponding information criteria.
+#' @return a matrix with different lag specifications,  threshold values and the corresponding information criteria.
 #' @examples
 #'
 #' m = 2                  ## m: number of variables, n: number of countries
@@ -1086,6 +1093,7 @@ irf_MRCIGVAR_CB <- function (res, nstep, comb, state = c(2, 1), irf = c("gen", "
 #'
 #' @export
 #'
+#' @keywords internal
 irf_MRCIGVAR = function(res,nstep,comb,state=state,irf=c("gen","chol","chol1","gen1","comb1"),sigmaNPDS=NA) {
       neq 	= dim(res$Go)[1]
 	    nvar	= dim(res$Go)[2]
@@ -1140,7 +1148,7 @@ irf_MRCIGVAR = function(res,nstep,comb,state=state,irf=c("gen","chol","chol1","g
 #' plot(ts(res_d$Y))
 #' #res_e$Summary
 #'
-#' if (!((max(Mod(STAT(res_e$Go[,,,1])))>1)|(max(Mod(STAT(res_e$Go[,,,2])))>1)) ) {
+#' if (!((max(Mod(STAT(res_e$Go[,,,1])))>1.0001)|(max(Mod(STAT(res_e$Go[,,,2])))>1.0001)) ) {
 #'   GIRF <- girf_MRCIGVAR_RM(res=res_e,shock=c(1,1,1,1,1,1),R=100,nstep=10,Omega_hist=NA,
 #'   resid_method="parametric")
 #'   GIRF_CB <- girf_MRCIGVAR_RM_CB(res=res_e,shock=c(1,1,1,1,1,1),R=100,nstep=10,Omega_hist=NA,
@@ -1149,6 +1157,7 @@ irf_MRCIGVAR = function(res,nstep,comb,state=state,irf=c("gen","chol","chol1","g
 #' }
 #'
 #' @export
+#' @keywords internal
 girf_MRCIGVAR_RM <- function(res,shock,R,nstep,Omega_hist=NA,resid_method) {
   ####  this function generate the impulse response function of MRVAR with regime migration
   ####
@@ -1359,6 +1368,7 @@ girf_MRCIGVAR_RM_CB <- function(res,shock,R,nstep,Omega_hist=NA,resid_method="pa
 #' @return	: an MRCIGVAR object.
 #'
 #' @export
+#' @keywords internal
 MRCIGVARDataR <- function(res) {
   ### res_e : an estimated MRGVAR model that is an output of MRCIGVARest
   ### T     : number of observations

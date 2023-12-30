@@ -57,3 +57,4 @@ res_e$Summary
 IRF  = irf_MRGVAR(res=res_e,nstep=10,comb=NA,state=c(1,1),irf="gen1")
 
 }
+\keyword{internal}

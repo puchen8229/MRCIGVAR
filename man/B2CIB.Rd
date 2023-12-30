@@ -10,9 +10,7 @@ B2CIB(B)
 \item{B}{an (m,m,L) array containing the coefficients of the level VAR.}
 }
 \value{
-\preformatted{ A list containing three components.
-}
-
+A list containing three components.
 \itemize{
 \item CIB        : the coefficients matrix of the error correction form
 \item alpha	     : the adjustment coefficients
@@ -23,3 +21,4 @@ B2CIB(B)
 \description{
 Transformation of the coefficient matrix of a CIGVAR to the coefficient matrix of the corresponding VECM.
 }
+\keyword{internal}

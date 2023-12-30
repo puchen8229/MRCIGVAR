@@ -12,8 +12,7 @@ CIGVAR_Select(res, L_V = L_V)
 \item{L_V}{: a 2 components vector containing the maxima of the domestic lag and the foreign lag, respectively.}
 }
 \value{
-\preformatted{ : a matrix with different lag specifications and the corresponding information criteria.
-}
+a matrix with different lag specifications and the corresponding information criteria.
 }
 \description{
 This function calculates AIC and BIC criteria for a range of lag specifications of the domestic and foreign variables up to the maximum given in L_V.

@@ -17,3 +17,4 @@ The covariance matrix of the selected states
 \description{
 Calculate a state dependent covariance matrix from GVAR residuals
 }
+\keyword{internal}

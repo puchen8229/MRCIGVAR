@@ -14,3 +14,4 @@ NoutofT(N, T)
 \description{
 This function selects randomly N elements out of a set of T elements
 }
+\keyword{internal}

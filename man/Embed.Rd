@@ -19,3 +19,4 @@ A matrix containing the embedded time series y.
 \description{
 Embeds the time series y into a low-dimensional Euclidean space with column names.
 }
+\keyword{internal}

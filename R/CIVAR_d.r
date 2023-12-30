@@ -26,7 +26,7 @@
 #' @param mu    : an n vector of drifts of the CIVAR(p) process
 #' @param Yo    : (p x n) matrix of initial values of the process
 #' @param crk   : number of cointegration relations. It equals n-r, where r is the number of unit roots.
-#' @return      An object of CIVAR(p) containing the generated data, the parameters used and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
+#' @return An object of CIVAR(p) containing the generated data, the parameters used and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
 #' @examples
 #' res_d = CIVARData(n=2,p=2,T=100,type="const")
 #' res_d = CIVARData(n=2,p=2,T=10,Co=c(1:2)*0,type="none")
@@ -374,9 +374,11 @@ CIVARest <- function (res)
 #' @param Dxflag : A flag indicating if the conditioning variables enter the cointegration space
 #' @param X     : The conditioning variables
 #' @param CZ    : Common factor variables in CIGVAR and MRCIGVAR
-#' @return        A list containing: the result of the Johansen test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
+#' @return A list containing: the result of the Johansen test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s.
 #'
 #' @export
+#' @keywords internal
+#'
 MRCVECMest2 <- function (y, x, s, model = c("I", "II", "III","IV", "V"), type = c("eigen", "trace"), crk = 2, P = matrix(2, 2, 2), q = 0.95, Dxflag = 0, X = NA,CZ=NA)
 {
   y <- as.matrix(y)
@@ -731,8 +733,10 @@ MRCVECMest2 <- function (y, x, s, model = c("I", "II", "III","IV", "V"), type = 
 #' @param Dxflag : a flag indicating if the conditioning variables enter the cointegration space
 #' @param X     : the exogenous stationary variables
 #' @param CZ    : the exogenous non-stationary common factors
-#' @return      : a list containing: the result of JH test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
+#' @return a list containing: the result of JH test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
 #' @export
+#' @keywords internal
+#'
 MRCVECMestm <- function (y, x, s, model = c("I", "II", "III", "IV", "V"), type = c("eigen", "trace"), crk = 2, P = matrix(2, 2, 2), q = 0.95, Dxflag = 0, X = X, CZ=NA)
 {
   y <- as.matrix(y)
@@ -1085,6 +1089,8 @@ MRCVECMestm <- function (y, x, s, model = c("I", "II", "III", "IV", "V"), type =
 #' @param lm1 The coefficient matrix of the output of lm
 #' @param sname The elements in column names to be replaced
 #' @export
+#' @keywords internal
+#'
 summaryCIVAR <- function(lm1=lm1,sname ="Z2\\[,4:9\\]") {
   #### this function replace the Matrix name and leave the colnames in the output
   summ =summary(lm1)
@@ -1125,30 +1131,34 @@ summaryCIVAR <- function(lm1=lm1,sname ="Z2\\[,4:9\\]") {
 #' This function runs a likelihood ratio test of linear restrictions on \eqn{\alpha} and \eqn{\beta} in a CIVAR model in the following form:
 #'		\deqn{vec(\alpha') = G \psi,  vec(\beta) = H\phi + h}
 #'
-#'        example 1 (restrictions on alpha) test of exogeneity
-#'                  vec(alpha) is 45 x 1  vector  ( n = 9 crk = 5, defined by the model )
-#'                  G          is 45 x 40 matrix  ( the first variable is exogenous, i.e. the 5 adjustment coefficient of the first variable are zero )
-#'                  psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by G)
-#'                  vec(beta)  is 45 x 1 vector   ( N = 0 crk = 5 )
-#'                  H          is 45 x 45 identity matrix
-#'                  phi        45 x 1 vector (free varying parameters not appearing in the specification but implied by h =0
-#'                  h          45 x 1 zero matrix implying ver(beta) = phi  >> no restrictions on beta.
-#'                             (H is identity and h is zero vector implies only restrictions on alpha)
+#' example 1 (restrictions on alpha) test of exogeneity: one weakly exogenous variable
+#'     vec(alpha) is n*crk x 1  vector
+#'     G          is n*crk x (n-k)*crk matrix  (k is the number of weakly exogenous)
+#'     psi        (n-k)*crk x 1 vector
+#'     vec(beta)  is n*crk x 1 vector
+#'     H          is n*crk x n*crk identity matrix
+#'     phi        n*crk x 1 vector
+#'     h          n*crk x 1 zero matrix implying ver(beta) = phi.
+#'                (H is identity and h is zero vector implies only restrictions on alpha)
 #'
-#'        example 2 (restrictions on beta ) test of PPP
-#'                  vec(alpha) is 40 x 1  vector  ( N = 8 crk = 5 ) conditional VECM  or VECMX model
-#'                  G          is 40 x 40 identity matrix, implying there is no restriction on alpha
-#'                  psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by the identity matrix G
-#'                  vec(beta)  is 45 x 1 vector   ( N = 8 crk = 5, defined by the model )
-#'                  H          is 45 x 2 matrix that picks out the elements under restrictions ( two columns out of the identity matrix ) a zero row in H and the corresponding h implies zero-restrictions on beta.
-#'                             ones in a row of H and zero in the corresponding h implies non-restricted beta.
-#'                  phi        2  x 1  vector (free varying parameters not appearing in the specification but implied by h =0
-#'                  h          45 x 1  non zero elements in this vector together with the zero elements in the corresponding row in H are the normalization conditions.
-#'                             (H is identity and h is zero vector implies only restrictions on alpha)
+#' example 2 (restrictions on beta ) test of PPP
+#'     vec(alpha) is n*crk x 1 vector
+#'     G          is n*crk x n*crk identity matrix, implying no restriction on alpha
+#'     psi        n*crk x 1 vector
+#'     vec(beta)  n*crk x 1 vector
+#'     H          n*crk x 2 matrix that picks out the elements under restrictions
+#'                two columns out of the identity matrix.
+#'                ones in a row of H and zero in the corresponding h implies non-restricted beta.
+#'     phi        2 x 1  vector
+#'     h          n*crk x 1  non zero elements in this vector together with the zero elements in
+#'                the corresponding row in H are the normalization conditions.
+#'                (H is identity and h is zero vector implies only restrictions on alpha)
 #'
-#' @return        a list containing (VECMRS, beter, alphar, LSKOEFR, LR, and error)
+#' @return a list containing (VECMRS, beter, alphar, LSKOEFR, LR, and error)
 #'
 #' @export
+#' @keywords internal
+#'
 AB_CIVARTest <- function(R0,R1,G,H,h,alpha,beta,Omega,Y0,Z1,Z2) {
   ### this function runs Doornik Boswijk Iteration to estimate restricted alpha and beta
   ### It also estimates the separate MRCIVAR and compare it with the restricted including the model with identical beta.
@@ -1261,26 +1271,28 @@ AB_CIVARTest <- function(R0,R1,G,H,h,alpha,beta,Omega,Y0,Z1,Z2) {
 #' This function runs a likelihood ratio test of linear restrictions on \eqn{\alpha} and \eqn{\beta} in a CIVAR model in the following form:
 #'		\deqn{vec(\alpha') = G \psi,  vec(\beta) = H\phi + h}
 #'
-#'        example 1 (restrictions on alpha) test of exogeneity
-#'                  vec(alpha) is 45 x 1  vector  ( n = 9 crk = 5, defined by the model )
-#'                  G          is 45 x 40 matrix  ( the first variable is exogenous, i.e. the 5 adjustment coefficient of the first variable are zero )
-#'                  psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by G)
-#'                  vec(beta)  is 45 x 1 vector   ( N = 0 crk = 5 )
-#'                  H          is 45 x 45 identity matrix
-#'                  phi        45 x 1 vector (free varying parameters not appearing in the specification but implied by h =0
-#'                  h          45 x 1 zero matrix implying ver(beta) = phi  >> no restrictions on beta.
-#'                             (H is identity and h is zero vector implies only restrictions on alpha)
+#' example 1 (restrictions on alpha) test of exogeneity: one weakly exogenous variable
+#'     vec(alpha) is n*crk x 1  vector
+#'     G          is n*crk x (n-k)*crk matrix  (k is the number of weakly exogenous)
+#'     psi        (n-k)*crk x 1 vector
+#'     vec(beta)  is n*crk x 1 vector
+#'     H          is n*crk x n*crk identity matrix
+#'     phi        n*crk x 1 vector
+#'     h          n*crk x 1 zero matrix implying ver(beta) = phi.
+#'                (H is identity and h is zero vector implies only restrictions on alpha)
 #'
-#'        example 2 (restrictions on beta ) test of PPP
-#'                  vec(alpha) is 40 x 1  vector  ( N = 8 crk = 5 ) conditional VECM  or VECMX model
-#'                  G          is 40 x 40 identity matrix, implying there is no restriction on alpha
-#'                  psi        40 x 1 vector (free varying parameters not appearing in the specification but implied by the identity matrix G
-#'                  vec(beta)  is 45 x 1 vector   ( N = 8 crk = 5, defined by the model )
-#'                  H          is 45 x 2 matrix that picks out the elements under restrictions ( two columns out of the identity matrix ) a zero row in H and the corresponding h implies zero-restrictions on beta.
-#'                             ones in a row of H and zero in the corresponding h implies non-restricted beta.
-#'                  phi        2  x 1  vector (free varying parameters not appearing in the specification but implied by h =0
-#'                  h          45 x 1  non zero elements in this vector together with the zero elements in the corresponding row in H are the normalization conditions.
-#'                             (H is identity and h is zero vector implies only restrictions on alpha)
+#' example 2 (restrictions on beta ) test of PPP
+#'     vec(alpha) is n*crk x 1 vector
+#'     G          is n*crk x n*crk identity matrix, implying no restriction on alpha
+#'     psi        n*crk x 1 vector
+#'     vec(beta)  n*crk x 1 vector
+#'     H          n*crk x 2 matrix that picks out the elements under restrictions
+#'                two columns out of the identity matrix.
+#'                ones in a row of H and zero in the corresponding h implies non-restricted beta.
+#'     phi        2 x 1  vector
+#'     h          n*crk x 1  non zero elements in this vector together with the zero elements in
+#'                the corresponding row in H are the normalization conditions.
+#'                (H is identity and h is zero vector implies only restrictions on alpha)
 #'
 #' @return a list containing (VECMRS, beter, alphae, LSKOEFR, LR and error)
 #' @examples
@@ -1407,6 +1419,8 @@ return(test)
 #' @param h restriction vector of beta
 #' @param G restriction matrix of alpha
 #' @export
+#' @keywords internal
+#'
 abLRtest2 =function (y,x,model = c("I","II","III","IV","V"), bnorm = c("1","2"),type = c("eigen", "trace"),p = 1, r = 2, q = 0.95, H=H,h=h,G=G)   {
 ###
 ### This function runs a likelihood ratio test of linear restrictions on alpha and beta in a CIVAR model
@@ -1810,6 +1824,9 @@ abLRtest2 =function (y,x,model = c("I","II","III","IV","V"), bnorm = c("1","2"),
 #'
 #' @return A list of (A, B, C) with B the auto regression parameter matrix, C the parameter of the deterministic components, and A the parameter matrix of foreign variables for CIGVAR.
 #' @export
+#' @keywords internal
+#'
+#'
 VECM2VAR <- function(param, beta, q = c(1, 2, 2, 2, 2),s=NA,kz=0,Dxflag=0)
 {
   m = dim(param)[2]
@@ -1940,7 +1957,7 @@ VECM2VAR <- function(param, beta, q = c(1, 2, 2, 2, 2),s=NA,kz=0,Dxflag=0)
 #' Transformation of the coefficient matrix of a CIGVAR to the coefficient matrix of the corresponding VECM.
 #'
 #' @param  B  an (m,m,L) array containing the coefficients of the level VAR.
-#' @return      A list containing three components.
+#' @return A list containing three components.
 #' \itemize{
 #'    \item CIB        : the coefficients matrix of the error correction form
 #'    \item alpha	     : the adjustment coefficients
@@ -1948,6 +1965,8 @@ VECM2VAR <- function(param, beta, q = c(1, 2, 2, 2, 2),s=NA,kz=0,Dxflag=0)
 #'    \item sm         : the discrepancy between the selected alpha beta and CIB.
 #' }
 #' @export
+#' @keywords internal
+#'
 B2CIB <- function (B)
 {
   CIB = B * 0
@@ -1990,13 +2009,15 @@ B2CIB <- function (B)
 #' Transformation of coefficient matrix of a VECM to the coefficients matrix of the corresponding CIGVAR in level.
 #'
 #' @param  tst  : an output of CIGVARest
-#' @return      A list containing three components.
+#' @return A list containing three components.
 #' \itemize{
 #'     \item B          : the coefficient matrices of the domestic variables
 #'     \item A	        : the coefficient matrices of the foreign variables
 #'     \item C          : the coefficient matrices of the deterministic components
 #' }
 #' @export
+#' @keywords internal
+#'
 CIB2B = function(tst) {
   P  = tst$P
   r  = ncol(as.matrix(tst$beta))
@@ -2050,6 +2071,8 @@ CIB2B = function(tst) {
 #' @param CIB an (m,m,L) array of the coefficients matrices of a VECM with lag L-1.
 #' @return B (m,m,L) array the coefficients of a VAR with lag L
 #' @export
+#' @keywords internal
+#'
 CIB3B = function(CIB) {
   BB = CIB*0
   L = dim(CIB)[3]
@@ -2076,6 +2099,7 @@ CIB3B = function(CIB) {
 #'
 #' @return the coefficient matrix of the corresponding VAR in level
 #' @export
+#' @keywords internal
 #'
 CIA2A = function(CIA) {
 	AA = CIA*0
@@ -2127,7 +2151,7 @@ STAT = function(G) {
 #' @param Xshks : the number of selected exogenous shocks
 #' @param runs  : number of runs used in the the calculation of the bootstrap confidence interval.
 #' @param conf  : a two component vector containing the tail probabilities of the bootstrap confidence interval.
-#' @return       an array of dimension (n, n, nstep, 3).
+#' @return an array of dimension (n, n, nstep, 3).
 #' @examples
 #'
 #' res_d = CIVARData(n=4,p=2,T=84,Co=matrix(c(1,1,1,1),4,1)*0,type="none",crk=1)
@@ -2451,6 +2475,7 @@ CVECM2CVAR <- function (param, beta, p = c(1, 2, 2, 2, 2), s = NA, N2)
 #'
 #' @return a new index
 #' @export
+#' @keywords internal
 #'
 Redex = function(N1,N2,p) {
   M     = N1 + N2
@@ -2546,6 +2571,8 @@ CCIVARData<- function(n1,n2,crk,p,T,type,Bc=NA) {
 #'
 #' @return a list of estimated parameters and test statistics
 #' @export
+#' @keywords internal
+#'
 cvecm <- function (y,x,model = c("I","II","III","IV","V"),type = c("eigen", "trace"), crk=2, p = 1, q = 0.95)
 {
   y <- as.matrix(y)
@@ -2805,7 +2832,7 @@ cvecm <- function (y,x,model = c("I","II","III","IV","V"),type = c("eigen", "tra
 #' #RR <- MIxCIVARData(n=9,p=2,T=209,r=5,k=2,type="const",Bo=NA,Y=NA,D=NA)
 #' ## DGP of I(1) and I(0) mixed VECM
 #' #plot(ts(RR$Y))
-#'
+#' #
 #' #### testing the mixed VECM via testing the restrictions on beta
 #' #res_d <- CIVARData(n=9,p=2,T=209,type="const",crk=4)
 #' #res_e = CIVARest(res=res_d)
@@ -2828,8 +2855,18 @@ cvecm <- function (y,x,model = c("I","II","III","IV","V"),type = c("eigen", "tra
 #' #ABtest$alphar
 #' #ABtest$VECMR$coefficients
 #' #ABtest$LR
-#' #1-pchisq(ABtest$LR,14)   ### The Ho of last two are I(0) can be rejected
-#' #RR$GABtest$LR
+#' #1-pchisq(ABtest$LR,14)   ### The Ho of last two are I(0) is rejected
+#' #
+#' #res_d$Y = RR$Y           ### replacing the data of two I(0) variables
+#' #ABtest = CIVARTest(res=res_d,H=H2,h=h,phi=phi,G=G,Dxflag=0)
+#' #ABtest$betar
+#' #ABtest$alphar
+#' #ABtest$VECMR$coefficients
+#' #ABtest$LR
+#' #1-pchisq(ABtest$LR,14)  ### The Ho of last two are I(0) cannot be rejected
+#' #
+#' #RR$GABtest$LR           ## RR contains the same LR
+#' #
 #' #
 #' @export
 #'
@@ -3039,6 +3076,7 @@ MIxCIVARData = function(n,p,T,r,k,type,Bo=NA,Y=NA,X=NA,D=NA,Go=NA,B=NA,Sigma = N
 #'
 #' @return  the orthogonal complementary matrix
 #' @export
+#' @keywords internal
 #'
 alpha_perpf = function(alpha=(alpha)) {
 
@@ -3066,6 +3104,7 @@ alpha_perpf = function(alpha=(alpha)) {
 #'
 #' @return  difference
 #' @export
+#' @keywords internal
 #'
 xABF <-  function(x,A0,B0,Sigma) {
   ### this function solves A and B from the reduced form Sigma for a AB-SVAR

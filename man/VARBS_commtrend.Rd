@@ -29,3 +29,4 @@ A list contain VAR parameters B, alpha, and beta
 \description{
 Generating parameter matrices with common trends across countries
 }
+\keyword{internal}

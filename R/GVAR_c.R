@@ -15,12 +15,12 @@
 #' @param Co    : an (m, k+1, n) array collecting the coefficients of the deterministic components of the n countries.
 #' @param Uo    : an (T x mn) matrix of the temporally independent innovations
 #' @param Sigmao : an (mn x mn) matrix of the covariance matrix of the GVAR(m,n,p)
-#'
 #'                (W,r_npo,Ao,Bo,Uo,Sigmao) if not provided, they will be generated randomly.
+#'
 #' @param type  : types of deterministic components: "const", "none", "exog0", and "exog1" are the options.
 #' @param X     : (T x k x n ) array of exogenous variables.
 #' @param mu    : if type = "const" mu has the same dimension as Co. It contains the means of the time series in the system.
-#' @return      a GVAR object which is a list("Y","X","Uo","G","C","Sigmao","r_npo","Ao","Bo","Co","W","m","n","p","mu","check","type") containing the generated data, the used parameters, and the inputted of exogenous variables.
+#' @return a GVAR object that is a list containing the generated data, the used parameters, and the inputted of exogenous variables.
 #'
 #' @export
 #'
@@ -399,6 +399,8 @@ GVARest <- function (res)  {
 #'
 #' @return An (mn, mn, p ) array of the GVAR(m,n,p) coefficients.
 #' @export
+#' @keywords internal
+#'
 BoAoW2G = function(Bo,Ao,W,m,n,p) {
   dim(Bo) = c(m,m,p,n)
   dim(Ao) = c(m,m,p,n)
@@ -429,6 +431,8 @@ return(G)
 #'
 #' @return A list containing the parameter matrices of domestric variables and foreign variables
 #' @export
+#' @keywords internal
+#'
 GW2BoAo = function(G,W) {
   n = dim(W)[1]
   m = dim(G)[1]/n
@@ -481,6 +485,8 @@ return(result)
 #' IRF_g = IRF_graph(IRF_CB,Names=NA,response=c(1,4),impulse=c(1,2,3,4), ncol=4)
 #'
 #' @export
+#' @keywords internal
+#'
 irf_GVAR = function(res,nstep,comb,irf=c("gen","chol","chol1","gen1","comb1")) {
 	B 	= res$G
       neq 	= dim(B)[1]
@@ -577,7 +583,7 @@ irf_GVAR_CB =function(res,nstep,comb,irf=c("gen","chol","chol1","gen1","comb1"),
 #' @param  L_V  : a two components vector containing the maxima of the domestic lag and the foreign lag, respectively.
 #' @param  I    : Index of the country under investigation.
 
-#' @return      : A matrix with different lag specifications and values of the model information criteria.
+#' @return A matrix with different lag specifications and values of the model information criteria.
 #' @examples
 #'
 #' n = 4
@@ -645,6 +651,8 @@ return(Criteria)
 #'
 #' @return the corresponding weighting matrix
 #' @export
+#' @keywords internal
+#'
 W2Wmat = function(W) {
  n = length(W)
  Wmat = matrix(0,n,n)
@@ -663,6 +671,8 @@ W2Wmat = function(W) {
 #'
 #' @return The weighting matrix
 #' @export
+#' @keywords internal
+#'
 SW2comb = function(SW,n,N,K)
 {
   comb = matrix(0,n*N,N*n)

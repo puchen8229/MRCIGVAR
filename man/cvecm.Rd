@@ -35,3 +35,4 @@ a list of estimated parameters and test statistics
 \description{
 This function estimates the unknown parameters of a multi regime conditional VECM based on provided data.
 }
+\keyword{internal}

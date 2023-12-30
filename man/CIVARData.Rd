@@ -47,8 +47,7 @@ CIVARData(n, p, T, r_np, A, B, Co, C1, U, Sigma, type, X, mu, Yo, crk)
 \item{crk}{: number of cointegration relations. It equals n-r, where r is the number of unit roots.}
 }
 \value{
-\preformatted{ An object of CIVAR(p) containing the generated data, the parameters used and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
-}
+An object of CIVAR(p) containing the generated data, the parameters used and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
 }
 \description{
 This function generates data from a cointegrated vector autoregressive process CIVAR(p) and returns CIVAR(p) object that is a list containing data and parameters used in the CIVAR(p) process.

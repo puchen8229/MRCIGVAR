@@ -58,7 +58,7 @@ This function generates and estimates a mixed VECM with I(0) and I(1) variables
 #RR <- MIxCIVARData(n=9,p=2,T=209,r=5,k=2,type="const",Bo=NA,Y=NA,D=NA)
 ## DGP of I(1) and I(0) mixed VECM
 #plot(ts(RR$Y))
-
+#
 #### testing the mixed VECM via testing the restrictions on beta
 #res_d <- CIVARData(n=9,p=2,T=209,type="const",crk=4)
 #res_e = CIVARest(res=res_d)
@@ -81,7 +81,17 @@ This function generates and estimates a mixed VECM with I(0) and I(1) variables
 #ABtest$alphar
 #ABtest$VECMR$coefficients
 #ABtest$LR
-#1-pchisq(ABtest$LR,14)   ### The Ho of last two are I(0) can be rejected
-#RR$GABtest$LR
+#1-pchisq(ABtest$LR,14)   ### The Ho of last two are I(0) is rejected
+#
+#res_d$Y = RR$Y           ### replacing the data of two I(0) variables
+#ABtest = CIVARTest(res=res_d,H=H2,h=h,phi=phi,G=G,Dxflag=0)
+#ABtest$betar
+#ABtest$alphar
+#ABtest$VECMR$coefficients
+#ABtest$LR
+#1-pchisq(ABtest$LR,14)  ### The Ho of last two are I(0) cannot be rejected
+#
+#RR$GABtest$LR           ## RR contains the same LR
+#
 #
 }

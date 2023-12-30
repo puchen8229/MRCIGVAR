@@ -14,8 +14,7 @@ GVAR_Select(res = res, L_V = L_V, I = I)
 \item{I}{: Index of the country under investigation.}
 }
 \value{
-\preformatted{ : A matrix with different lag specifications and values of the model information criteria.
-}
+A matrix with different lag specifications and values of the model information criteria.
 }
 \description{
 Calculation of the information criteria of a GVAR country models for a given range of maximum lags.

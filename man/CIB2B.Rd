@@ -10,9 +10,7 @@ CIB2B(tst)
 \item{tst}{: an output of CIGVARest}
 }
 \value{
-\preformatted{ A list containing three components.
-}
-
+A list containing three components.
 \itemize{
 \item B          : the coefficient matrices of the domestic variables
 \item A	        : the coefficient matrices of the foreign variables
@@ -22,3 +20,4 @@ CIB2B(tst)
 \description{
 Transformation of coefficient matrix of a VECM to the coefficients matrix of the corresponding CIGVAR in level.
 }
+\keyword{internal}

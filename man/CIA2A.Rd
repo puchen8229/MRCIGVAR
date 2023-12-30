@@ -15,3 +15,4 @@ the coefficient matrix of the corresponding VAR in level
 \description{
 Transformation of VECM coefficient matrix to VAR coefficient matrix
 }
+\keyword{internal}

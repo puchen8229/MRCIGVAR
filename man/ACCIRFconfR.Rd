@@ -15,3 +15,4 @@ The cumulative impulse response function
 \description{
 Calculation of the cumulative impulse response function from a impulse response function
 }
+\keyword{internal}

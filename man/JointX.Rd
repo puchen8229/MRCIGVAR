@@ -15,3 +15,4 @@ An array of containing exogenous data
 \description{
 Join exogenous variable matrix for MRVAR
 }
+\keyword{internal}

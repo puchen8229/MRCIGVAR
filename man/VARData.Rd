@@ -34,8 +34,7 @@ VARData(n, p, T, r_np, A, B, Co, U, Sigma, type, X, mu, Yo)
 \item{Yo}{: a p x n matrix of initial values of the VAR(p) process}
 }
 \value{
-\preformatted{ An object of VAR(p) containing the generated data, the used parameters and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
-}
+An object of VAR(p) containing the generated data, the used parameters and the exogenous variables. res = list(n,p,type,r_np,Phi,A,B,Co,Sigma,Y,X,resid,U,Y1,Yo,check)
 }
 \description{
 This function will generate data from a stationary VAR(p) process and return a list containing data and parameters used in the VAR(p) process.

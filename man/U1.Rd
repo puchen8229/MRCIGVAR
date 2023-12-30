@@ -28,8 +28,9 @@ U1(
 \item{smat}{An explicit decomposition matrix that defines a structural shock.}
 }
 \value{
-The transformation matrix for shock decomposition
+The transformation matrix for a shock decomposition
 }
 \description{
 Initial U1 for DATA generating IRF
 }
+\keyword{internal}

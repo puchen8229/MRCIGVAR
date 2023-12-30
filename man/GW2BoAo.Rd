@@ -17,3 +17,4 @@ A list containing the parameter matrices of domestric variables and foreign vari
 \description{
 Transformation of a global VAR parameter matrix to the country GVAR parameter matrices
 }
+\keyword{internal}

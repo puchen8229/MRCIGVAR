@@ -17,3 +17,4 @@ A positive definite covariance matrix of the selected states each country
 \description{
 Select a state-dependent covariance matrix from a GVAR model
 }
+\keyword{internal}

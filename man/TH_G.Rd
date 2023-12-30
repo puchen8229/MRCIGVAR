@@ -13,4 +13,4 @@ TH_G
 \description{
 Threshold values determined by information criterion
 }
-\keyword{datasets}
+\keyword{internal}

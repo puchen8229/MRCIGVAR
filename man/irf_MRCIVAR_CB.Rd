@@ -53,7 +53,7 @@ res_d = MRCIVARDatam(n=n,p=p,T=250,S=2,SESVI=1,TH=0,Sigmao=Sigma,type="const",r=
 max(abs(res_d$Y))
 res_e = MRCIVARestm1(res=res_d)
 #res_e$Summary
-if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1 ) {
+if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1.0001 ) {
 
   IRF  = irf_MRCIVAR_CB(res_e,nstep=20,irf="gen1",runs=100,comb=NA,G=NA,conf=c(0.05,0.95))
   IRF_g1 <- IRF_graph(IRF[[1]])        # irf of regime 1

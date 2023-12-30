@@ -13,4 +13,4 @@ Tab4
 \description{
 Critical values from David Mackinnon
 }
-\keyword{datasets}
+\keyword{internal}

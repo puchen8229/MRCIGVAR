@@ -15,3 +15,4 @@ the orthogonal complementary matrix
 \description{
 This function calculates the orthogonal complementary space
 }
+\keyword{internal}

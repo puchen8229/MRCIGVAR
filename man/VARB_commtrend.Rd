@@ -25,3 +25,4 @@ A list containing the parameter matrix of the domestic variables, the cointegrat
 \description{
 This function creates independent common stochastic trends and idiosyncratic trends.
 }
+\keyword{internal}

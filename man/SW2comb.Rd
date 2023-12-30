@@ -21,3 +21,4 @@ The weighting matrix
 \description{
 Transformation of the weighting vector to a weighting matrix
 }
+\keyword{internal}

@@ -38,3 +38,11 @@ an (n, n, nstep, 3) array containing the impulse response functions
 \description{
 This function generates impulse response functions of an estimated VAR(p)
 }
+\examples{
+res_d = VARData(n=2,p=2,T=100,type="const")
+res_e = VARest(res=res_d);
+IRF_CB = irf_VAR_CB(res=res_e,nstep=20, comb=NA, irf = "gen1", runs = 100, conf = c(0.05, 0.95))
+IRF_list <-IRF_graph(IRF_CB)
+res_e$Summary
+
+}

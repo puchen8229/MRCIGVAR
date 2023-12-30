@@ -15,3 +15,4 @@ B (m,m,L) array the coefficients of a VAR with lag L
 \description{
 Transformation of the coefficients matrix of a VECM to the coefficients of the corresponding VAR in level
 }
+\keyword{internal}

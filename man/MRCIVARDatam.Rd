@@ -65,8 +65,7 @@ MRCIVARDatam(
 }}
 }
 \value{
-\preformatted{ An MRCIVAR object containing the generated data, the used parameters, and the exogenous variables.
-}
+An MRCIVAR object containing the generated data, the used parameters, and the exogenous variables.
 }
 \description{
 This function generates data from an multi-regime cointegrated VAR(p) process with identical cointegration relations and different adjustment speeds and returns a MRCIVAR which is a list containing data and parameters used in the multi regime cointegrated VAR(p) process.

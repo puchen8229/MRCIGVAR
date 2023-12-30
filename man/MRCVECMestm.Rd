@@ -42,9 +42,9 @@ MRCVECMestm(
 \item{CZ}{: the exogenous non-stationary common factors}
 }
 \value{
-\preformatted{ : a list containing: the result of JH test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
-}
+a list containing: the result of JH test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
 }
 \description{
 This function estimates the unknown parameters of a two regime conditional VECM based on provided data. The cointegrating vectors are identical in the two regimes but the adjustment speeds are different in the two regimes.
 }
+\keyword{internal}

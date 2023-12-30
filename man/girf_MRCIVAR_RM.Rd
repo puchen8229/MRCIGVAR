@@ -32,7 +32,6 @@ GIRF(shock=SHCK) = mean(Y(resid)) - mean(Y(SHCK))
 
 See H.H. Pesaran and Y. Shin (1998) Generalized impulse response analysis in linear multivariate models, Economics Letters, 58(1) p. 17-29.
 and G. Koop, M. H. Pesaran, and S. M. Potter (1996), Impulse response analysis in nonlinear multivariate models, Journal of Econometrics, 74 (1996) 119-74.
-###########################################################################################################################################
 }
 \examples{
 
@@ -59,3 +58,4 @@ if (!((max(Mod(STAT(res_e$B[,,,1])))>1)|(max(Mod(STAT(res_e$B[,,,2])))>1)) ) {
   IRF_g<- IRF_graph(GIRF)
 }
 }
+\keyword{internal}

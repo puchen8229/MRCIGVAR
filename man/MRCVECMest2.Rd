@@ -42,9 +42,9 @@ MRCVECMest2(
 \item{CZ}{: Common factor variables in CIGVAR and MRCIGVAR}
 }
 \value{
-\preformatted{   A list containing: the result of the Johansen test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s
-}
+A list containing: the result of the Johansen test, VECM in regression format, lambda, beta, PI, GAMMA, model, P, s.
 }
 \description{
 This function estimates the unknown parameters of a multi regime conditional VECM based on provided data.
 }
+\keyword{internal}

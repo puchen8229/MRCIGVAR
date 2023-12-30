@@ -21,3 +21,4 @@ a shifted Z2 if there are exogenous common factors. It returns Z2 without shift 
 \description{
 This function generates impulse response functions of an estimated CIGVAR(m,n,p) with confidence bands.
 }
+\keyword{internal}

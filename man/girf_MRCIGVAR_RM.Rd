@@ -52,7 +52,7 @@ STAT(res_e$Go[,,,1])
 plot(ts(res_d$Y))
 #res_e$Summary
 
-if (!((max(Mod(STAT(res_e$Go[,,,1])))>1)|(max(Mod(STAT(res_e$Go[,,,2])))>1)) ) {
+if (!((max(Mod(STAT(res_e$Go[,,,1])))>1.0001)|(max(Mod(STAT(res_e$Go[,,,2])))>1.0001)) ) {
   GIRF <- girf_MRCIGVAR_RM(res=res_e,shock=c(1,1,1,1,1,1),R=100,nstep=10,Omega_hist=NA,
   resid_method="parametric")
   GIRF_CB <- girf_MRCIGVAR_RM_CB(res=res_e,shock=c(1,1,1,1,1,1),R=100,nstep=10,Omega_hist=NA,
@@ -61,3 +61,4 @@ if (!((max(Mod(STAT(res_e$Go[,,,1])))>1)|(max(Mod(STAT(res_e$Go[,,,2])))>1)) ) {
 }
 
 }
+\keyword{internal}

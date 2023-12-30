@@ -14,3 +14,4 @@ summaryCIVAR(lm1 = lm1, sname = "Z2\\\\[,4:9\\\\]")
 \description{
 This function replaces the variable names in an lm output.
 }
+\keyword{internal}

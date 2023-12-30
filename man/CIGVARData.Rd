@@ -48,8 +48,8 @@ CIGVARData(
 
 \item{Uo}{: an (T x mn) matrix of the temporally independent innovation processes}
 
-\item{Sigmao}{: (mn x mn) matrix of the covariance matrix of the CIGVAR(m,n,p)\preformatted{          (W,r_npo,Ao,Bo,Uo,Sigmao) if not provided, they will be generated randomly. The default assumption is one unit root in one country. Hence m-1 cointegration relations in each country.
-}}
+\item{Sigmao}{: (mn x mn) matrix of the covariance matrix of the CIGVAR(m,n,p)
+(W,r_npo,Ao,Bo,Uo,Sigmao) if not provided, they will be generated randomly. The default assumption is one unit root in one country. Hence m-1 cointegration relations in each country.}
 
 \item{type}{: deterministic component "const", "none", "exog0", and "exog1" are four options}
 
@@ -68,8 +68,7 @@ CIGVARData(
 \item{uz}{: innovations of the exogenous common factors}
 }
 \value{
-\preformatted{ a CIGVAR object containing the generated data, the parameters used and the exogenous variables.
-}
+a CIGVAR object containing the generated data, the parameters used and the exogenous variables.
 }
 \description{
 This function generates data from a cointegrated global VAR process and returns an CIGVAR(m,n,p) object that is a list containing data and parameters used in the CIGVAR(m,n,p) process.

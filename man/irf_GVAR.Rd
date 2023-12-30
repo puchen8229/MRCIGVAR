@@ -41,3 +41,4 @@ dim(IRF_CB)
 IRF_g = IRF_graph(IRF_CB,Names=NA,response=c(1,4),impulse=c(1,2,3,4), ncol=4)
 
 }
+\keyword{internal}

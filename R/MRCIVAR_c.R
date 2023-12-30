@@ -24,7 +24,7 @@
 #' @param r     : number of unit roots in the system. (n - r) is then the cointegration rank.
 #'
 #'               (TH,Bo,Sigmao,Uo,SV) if not provided, they will be generated randomly.
-#' @return      An MRCIVAR object containing the generated data, the used parameters, and the exogenous variables.
+#' @return An MRCIVAR object containing the generated data, the used parameters, and the exogenous variables.
 #'
 #' @examples
 #' Sigma = 1:(4*4*2)
@@ -472,7 +472,7 @@ MRCIVARestm1 <- function (res)
 #' max(abs(res_d$Y))
 #' res_e = MRCIVARestm1(res=res_d)
 #' #res_e$Summary
-#' if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1 ) {
+#' if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1.0001 ) {
 #'
 #'   IRF  = irf_MRCIVAR_CB(res_e,nstep=20,irf="gen1",runs=100,comb=NA,G=NA,conf=c(0.05,0.95))
 #'   IRF_g1 <- IRF_graph(IRF[[1]])        # irf of regime 1
@@ -550,6 +550,9 @@ irf_MRCIVAR_CB = function (res_e, nstep = 20, irf = c("gen", "gen1"),runs = 100,
 #'
 #' @return The parameter of the multi regime cointegrated VAR
 #' @export
+#' @keywords internal
+#'
+#'
 VECM2VARm = function (param, beta, p = c(1, 2, 2, 2, 2), s = NA)
 {
     m = dim(param)[2]
@@ -820,8 +823,9 @@ ABC_MRCIVARestm <- function(res=res,H=H,h=h,phi=phi,G=G,psi=psi) {
 #' @param St The regime indicator series
 #' @param crk The cointegration rank
 #'
-#' @return a list containing estimated constrained parameters as initial values for further iterations
+#' @return A list containing estimated constrained parameters as initial values for further iterations
 #' @export
+#' @keywords internal
 #'
 RZSt2VECM <- function(R0,R1,Y0,Z2,Z1,St,crk) {
     #This function estimate separate MRCIVAR
@@ -926,7 +930,7 @@ RZSt2VECM <- function(R0,R1,Y0,Z2,Z1,St,crk) {
 #' @param  L_V  : a 2 components vector containing the maxima of the lags length of the two regimes, respectively.
 #' @param  TH_V  : a vector containing possible threshold values for the selection.
 
-#' @return      : a matrix with different lag specifications, threshold values, and the corresponding model selection criteria.
+#' @return A matrix with different lag specifications, threshold values, and the corresponding model selection criteria.
 #' @examples
 #'
 #' Sigma = 1:(4*4*2)
@@ -999,7 +1003,7 @@ MRCIVAR_Selectm <- function(res=res,L_V=L_V,TH_V=TH_V) {
 #'
 #' See H.H. Pesaran and Y. Shin (1998) Generalized impulse response analysis in linear multivariate models, Economics Letters, 58(1) p. 17-29.
 #' and G. Koop, M. H. Pesaran, and S. M. Potter (1996), Impulse response analysis in nonlinear multivariate models, Journal of Econometrics, 74 (1996) 119-74.
-#'###########################################################################################################################################
+#'
 #' @param  res   : an MRCIVAR object containing the components  of an output of MRCIVARestm1.
 #' @param  shock : an n vector containing the shocks as impulse.
 #' @param  R     : the number runs to integrate out the random effects in order to obtain the means (see equation above).
@@ -1032,6 +1036,7 @@ MRCIVAR_Selectm <- function(res=res,L_V=L_V,TH_V=TH_V) {
 #'   IRF_g<- IRF_graph(GIRF)
 #' }
 #' @export
+#' @keywords internal
 girf_MRCIVAR_RM <- function(res,shock,R,nstep,Omega_hist=NA,resid_method) {
   ####  this function generate the impulse response function of MRVAR with migration
   ####
@@ -1140,7 +1145,7 @@ girf_MRCIVAR_RM <- function(res,shock,R,nstep,Omega_hist=NA,resid_method) {
 #'
 #' See H.H. Pesaran and Y. Shin (1998) Generalized impulse response analysis in linear multivariate models, Economics Letters, 58(1) p. 17-29.
 #' and G. Koop, M. H. Pesaran, and S. M. Potter (1996), Impulse response analysis in nonlinear multivariate models, Journal of Econometrics, 74 (1996) 119-74.
-#'###########################################################################################################################################
+#'
 #' @param  res   : an MRCIVAR object containing the components  of an output of MRCIVARestm1.
 #' @param  shock : an n vector containing the shocks as impulse.
 #' @param  R     : the number runs to integrate out the random effects in order to obtain the means (see equation above).
@@ -1168,7 +1173,7 @@ girf_MRCIVAR_RM <- function(res,shock,R,nstep,Omega_hist=NA,resid_method) {
 #' Mod(STAT(res_e$B[,,,2]))
 #'
 #' #res_e$Summary
-#' if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1.000000001 ) {
+#' if (! max(Mod(STAT(res_e$Bo[,,,1])),Mod(STAT(res_e$Bo[,,,2])) ) > 1.0001 ) {
 #'
 #'  IRF  = irf_MRCIVAR_CB(res_e,nstep=20,irf="gen1",runs=10,comb=NA,G=NA,conf=c(0.05,0.95))
 #'  IRF_g1 <- IRF_graph(IRF[[1]])        # irf of regime 1

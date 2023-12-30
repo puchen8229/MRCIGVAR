@@ -19,3 +19,4 @@ A response matrix
 \description{
 Inverse of a partial covariance matrix
 }
+\keyword{internal}

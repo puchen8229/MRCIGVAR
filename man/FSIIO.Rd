@@ -13,4 +13,4 @@ FSIIO
 \description{
 Financial stress index and industrial output
 }
-\keyword{datasets}
+\keyword{internal}

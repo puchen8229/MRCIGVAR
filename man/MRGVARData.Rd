@@ -66,9 +66,7 @@ MRGVARData(
 \item{d}{: the time lag between signal and switching}
 }
 \value{
-\preformatted{ a MRGVAR object containing the generated data, the used parameters and the exogenous variables.
-}
-
+an MRGVAR object containing the generated data, the used parameters and the exogenous variables.
 res_d = list(Y,X,Uo,resid,Go,GDC,Co,Sigmao,TH,St,SV,SESVI,Ao,Bo,check,type,m,n,p,S,W,SigmaS,Yo,d)
 \itemize{
 \item Y     : a (T x nm)  matrix of simulated data via of the MRGVAR(m,n,p,S)

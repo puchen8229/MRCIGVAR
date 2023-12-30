@@ -21,7 +21,7 @@
 #' @param X	    : a (T x k x n x S) matrix of exogenous variables.
 #' @param Yo    : Initial values
 #' @param d     : the time lag between signal and switching
-#' @return      a MRGVAR object containing the generated data, the used parameters and the exogenous variables.
+#' @return an MRGVAR object containing the generated data, the used parameters and the exogenous variables.
 #' res_d = list(Y,X,Uo,resid,Go,GDC,Co,Sigmao,TH,St,SV,SESVI,Ao,Bo,check,type,m,n,p,S,W,SigmaS,Yo,d)
 #' \itemize{
 #'    \item Y     : a (T x nm)  matrix of simulated data via of the MRGVAR(m,n,p,S)
@@ -519,6 +519,8 @@ MRGVARest <- function (res)
 #'
 #' @return The auto regression paramters of the GVAR model
 #' @export
+#' @keywords internal
+#'
 BoAoWs2Gs = function(Bo,Ao,W,m,n,p,state) {
   Bo_s=Bo[,,,,1]*0;dim(Bo_s) = c(m,m,p,n)
   Ao_s=Ao[,,,,1]*0;dim(Ao_s) = c(m,m,p,n)
@@ -539,6 +541,8 @@ BoAoWs2Gs = function(Bo,Ao,W,m,n,p,state) {
 #'
 #' @return The covariance matrix of the selected states
 #' @export
+#' @keywords internal
+#'
 SigmaNPD = function(res,StateT) {
       m = res$m
       p = res$p
@@ -596,6 +600,7 @@ SigmaNPD = function(res,StateT) {
 #' IRF  = irf_MRGVAR(res=res_e,nstep=10,comb=NA,state=c(1,1),irf="gen1")
 #'
 #' @export
+#' @keywords internal
 #'
 irf_MRGVAR = function(res=res,state=state,nstep=nstep,comb=comb,irf = c("gen", "chol", "chol1","gen1","genN1", "comb1","smat"),G=NA,smat=NA,sigmaNPDS=NA) {
       if (missing(G)) 		G = NA
@@ -658,6 +663,7 @@ irf_MRGVAR = function(res=res,state=state,nstep=nstep,comb=comb,irf = c("gen", "
 #' resid_method='parametric',conf=c(0.05,0.95),N=10)
 #' IRF_g   = IRF_graph(GIRF_CB,Names=c("P","Q","Pa","Qa"))    #IRF
 #' @export
+#' @keywords internal
 girf_MRGVAR_RM <- function(res,shock,R,nstep,Omega_hist,resid_method) {
   ####  this function generate the impulse response function of MRVAR with regime migration
   ####
@@ -864,7 +870,7 @@ girf_MRGVAR_RM_CB <- function(res,shock,R,nstep,Omega_hist=NA,resid_method="para
 #' @param I    : index of the country under investigation.
 #' @param L_V  : a four components vector containing the maxims of the domestic lag and the foreign lag for each regime, respectively.
 #' @param TH_V : a vector containing possible threshold values.
-#' @return     a matrix with different lag specifications and the corresponding values of the model selection criteria.
+#' @return a matrix with different lag specifications and the corresponding values of the model selection criteria.
 #' @examples
 #'
 #'
@@ -1141,9 +1147,10 @@ irf_MRGVAR_CB = function (res, state = c(2, 1), nstep, comb, irf = c("gen", "cho
 #' This function will generate data from a MRGVAR object. It will generate enough data for estimation purpose.
 #'
 #' @param res     : an output of MRGVARest
-#' @return	: an MRGVAR object.
+#' @return an MRGVAR object.
 #'
 #' @export
+#' @keywords internal
 MRGVARDataR=function(res) {
 ### res_e : an estimated MRGVAR model that is an output of MRGVARest
 ### T     : number of observations
@@ -1191,6 +1198,7 @@ MRGVARDataR=function(res) {
 #' @return The cumulative impulse response function
 #' @export
 #'
+#' @keywords internal
 ACCIRFconfR = function(IRF) {
       ACCirf = IRF
         dm = dim(IRF)
@@ -1209,6 +1217,8 @@ ACCIRFconfR = function(IRF) {
 #'
 #' @return A positive definite covariance matrix of the selected states each country
 #' @export
+#' @keywords internal
+#'
 SigmaNPDSelectR = function(res,StateT) {
       n = length(StateT);
       dim(StateT) = c(1,n);

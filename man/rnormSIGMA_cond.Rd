@@ -23,3 +23,4 @@ A (T x (n-1)) matrix of iid conditional normal time series or the conditional ex
 \description{
 This function generates random numbers from iid multivariate conditional normal distribution with covariance matrix Sigma, given i-th component has the value of v, this will be an (n-1) dimensional random number
 }
+\keyword{internal}

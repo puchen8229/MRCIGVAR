@@ -25,3 +25,4 @@ A list of (A, B, C) with B the auto regression parameter matrix, C the parameter
 \description{
 Transformation of the estimated parameters of a VECM into the parameters of the corresponging VAR
 }
+\keyword{internal}

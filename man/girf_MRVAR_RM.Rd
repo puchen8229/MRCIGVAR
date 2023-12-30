@@ -45,3 +45,4 @@ resid_method = "parametric", conf_level=c(0.05,0.95), N=100)
 IRF_list <-IRF_graph(RF4)
 
 }
+\keyword{internal}

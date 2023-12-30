@@ -13,4 +13,4 @@ p_G
 \description{
 Weighting matrix for GVAR based in GDP
 }
-\keyword{datasets}
+\keyword{internal}

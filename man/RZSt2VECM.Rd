@@ -22,8 +22,9 @@ RZSt2VECM(R0, R1, Y0, Z2, Z1, St, crk)
 \item{crk}{The cointegration rank}
 }
 \value{
-a list containing estimated constrained parameters as initial values for further iterations
+A list containing estimated constrained parameters as initial values for further iterations
 }
 \description{
 Calculation of restricted MRCIVAR parameters from data moment matrices
 }
+\keyword{internal}

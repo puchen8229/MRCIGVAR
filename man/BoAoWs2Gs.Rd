@@ -27,3 +27,4 @@ The auto regression paramters of the GVAR model
 \description{
 Calculation of auto regression parameters of a GVAR model from its country equations
 }
+\keyword{internal}

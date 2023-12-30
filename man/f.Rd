@@ -24,3 +24,4 @@ f(x, beta, Z1, St, NSt, Y0, Z2)
 \description{
 An auxiliary function for nonlinear estimation of the cointegration vectors
 }
+\keyword{internal}

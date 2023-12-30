@@ -21,3 +21,4 @@ Transformed Bo and Ao matrices
 \description{
 This function calculates a full rank linear transformation of initial Bo and Ao matrices with independent common trends and idiosyncratic trends.
 }
+\keyword{internal}

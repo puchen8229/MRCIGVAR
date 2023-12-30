@@ -14,8 +14,7 @@ MRCIGVAR_Select(res, L_V = L_V, TH_V = TH_V)
 \item{TH_V}{: a vector containing possible threshold values .}
 }
 \value{
-\preformatted{ a matrix with different lag specifications,  threshold values and the corresponding information criteria.
-}
+a matrix with different lag specifications,  threshold values and the corresponding information criteria.
 }
 \description{
 Calculation of information criteria AIC and BIC for an estimated MRCIGVAR model

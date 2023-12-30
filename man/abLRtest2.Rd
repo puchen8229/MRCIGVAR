@@ -44,3 +44,4 @@ abLRtest2(
 \description{
 This function runs a test in cointegration space and provides an estimation of restricted alpha and beta.
 }
+\keyword{internal}

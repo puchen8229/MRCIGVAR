@@ -21,3 +21,4 @@ difference
 \description{
 This function solves AB_SVAR from the reduced form and return the A, B matrices and the sum of squared errors
 }
+\keyword{internal}
