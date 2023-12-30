@@ -67,7 +67,7 @@ The main functions for this class of models are
 - irf_MRVAR_NM_CB
 - girf_MRVAR_RM_CB
 
-Following sample codes demonstrate how MRVARData is used to generate
+The following sample codes demonstrate how MRVARData is used to generate
 data from an MRVAR process.
 
 ``` r
@@ -80,4 +80,4 @@ res_e$Summary
 ```
 
 For more detailed use of MRCIGVAR please read Introduction to
-MRCIGVAR.html in the vignettes directory.
+MRCIGVAR.html in the vignettes directory, or click: https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/main/vignettes/Introduction-to-MRCIGVAR.html
