@@ -30,7 +30,6 @@ MRCIGVAR includes 8 classes of econometric models:
     + MRCIGVAR: multi regime cointegrated global vector autoregressive models
 
 This package contains functions for data generation with flexible model specifications, parameter estimation, model selection, impulse response functions, and parameter constraint tests for each model class. Through sample codes, this introduction demonstrates practical applications of these functions.
- 
 
 ## Installation
 
@@ -49,6 +48,8 @@ This is a basic example which shows you how to solve a common problem:
 library(MRCIGVAR)
 ## basic example code
 ```
+
+### MRVAR
 
 A multi regime VAR model is defined:
 
@@ -76,4 +77,5 @@ res_e = MRVARest(res=res_d)
 res_e$Summary
 
 ```
-For more detailed use of MRCIGVAR please read Introduction to MRCIGVAR.html in the vignettes directory.   
+
+For a more detailed use of MRCIGVAR please read Introduction-to-MRCIGVAR.html or click the link below: https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/master/vignettes/Introduction-to-MRCIGVAR.html

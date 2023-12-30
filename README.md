@@ -42,6 +42,8 @@ library(MRCIGVAR)
 ## basic example code
 ```
 
+### MRVAR
+
 A multi regime VAR model is defined:
 
 ![Y_t = \Big(C_o^{(1)} + \sum\_{j=1}^{p}B\_{j}^{(1)} Y\_{t}+u_t^{(1)}\Big){\bf 1}\_{\[f\_{t-d} \le \tau\]}+\Big(C_o^{(2)} + \sum\_{j=1}^{p}B\_{j}^{(2)} Y\_{t}+u_t^{(2)}\Big){\bf 1}\_{\[f\_{t-d} \> \tau\]}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Y_t%20%3D%20%5CBig%28C_o%5E%7B%281%29%7D%20%2B%20%5Csum_%7Bj%3D1%7D%5E%7Bp%7DB_%7Bj%7D%5E%7B%281%29%7D%20Y_%7Bt%7D%2Bu_t%5E%7B%281%29%7D%5CBig%29%7B%5Cbf%201%7D_%7B%5Bf_%7Bt-d%7D%20%5Cle%20%5Ctau%5D%7D%2B%5CBig%28C_o%5E%7B%282%29%7D%20%2B%20%5Csum_%7Bj%3D1%7D%5E%7Bp%7DB_%7Bj%7D%5E%7B%282%29%7D%20Y_%7Bt%7D%2Bu_t%5E%7B%282%29%7D%5CBig%29%7B%5Cbf%201%7D_%7B%5Bf_%7Bt-d%7D%20%3E%20%5Ctau%5D%7D "Y_t = \Big(C_o^{(1)} + \sum_{j=1}^{p}B_{j}^{(1)} Y_{t}+u_t^{(1)}\Big){\bf 1}_{[f_{t-d} \le \tau]}+\Big(C_o^{(2)} + \sum_{j=1}^{p}B_{j}^{(2)} Y_{t}+u_t^{(2)}\Big){\bf 1}_{[f_{t-d} > \tau]}")
@@ -67,7 +69,7 @@ The main functions for this class of models are
 - irf_MRVAR_NM_CB
 - girf_MRVAR_RM_CB
 
-The following sample codes demonstrate how MRVARData is used to generate
+Following sample codes demonstrate how MRVARData is used to generate
 data from an MRVAR process.
 
 ``` r
@@ -79,5 +81,6 @@ res_e = MRVARest(res=res_d)
 res_e$Summary
 ```
 
-For more detailed use of MRCIGVAR please read Introduction to
-MRCIGVAR.html in the vignettes directory, or click: https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/main/vignettes/Introduction-to-MRCIGVAR.html
+For a more detailed use of MRCIGVAR please read
+Introduction-to-MRCIGVAR.html or click the link below:
+<https://htmlpreview.github.io/?https://github.com/puchen8229/MRCIGVAR/blob/master/vignettes/Introduction-to-MRCIGVAR.html>
