@@ -1,8 +1,8 @@
 ---
-title: "Introduction to MRCIGVAR"
+title: "Introduction-to-MRCIGVAR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to MRCIGVAR}
+  %\VignetteIndexEntry{Introduction-to-MRCIGVAR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
